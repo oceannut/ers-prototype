@@ -25,7 +25,24 @@
         <div class="header">
             <ul class="nav nav-pills pull-right">
                 <li class="active"><a ng-href="#/">Home</a></li>
-                <li><a ng-href="#/about">About</a></li>
+                <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);"
+                       role="button" aria-expanded="false">
+                        common <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a ng-href="#/category/commodity">commodity category</a></li>
+                    </ul>
+                </li>
+                <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);"
+                       role="button" aria-expanded="false">
+                        biz <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a ng-href="#/commodity">commodity</a></li>
+                    </ul>
+                </li>
                 <li role="presentation" class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);"
                        role="button" aria-expanded="false">

@@ -1,28 +1,28 @@
 'use strict'
 
 define(['angular',
-        'controllers/main',
-		'controllers/about', 
+        'common/category-controllers',
+        'biz/commodity-controllers',
 		'crm/customer-controllers',
 		'crm/contact-controllers'], 
 	function(angular){
 		
 		angular.module('ers.routes', 
-			['ngRoute',  
-			 'ersPrototypeApp.controllers.MainCtrl',
-			 'ersPrototypeApp.controllers.AboutCtrl',
+			['ngRoute',
+             'ers.category.controllers',
+             'ers.commodity.controllers',
 			 'ers.customer.controllers',
 			 'ers.contact.controllers'])
 			.config(['$routeProvider', function($routeProvider) {
-				$routeProvider
-					.when('/', {
-						templateUrl : 'views/main.html',
-						controller : 'MainCtrl'
-					})
-					.when('/about', {
-						templateUrl : 'views/about.html',
-						controller : 'AboutCtrl'
-					})
+			    $routeProvider
+                    .when('/category/:categoryScope', {
+                        templateUrl: 'views/common/category-list.html',
+                        controller: 'CategoryCtrl'
+                    })
+                    .when('/commodity', {
+                        templateUrl: 'views/biz/commodity-list.html',
+                        controller: 'CommodityCtrl'
+                    })
 					.when('/customer', {
 						templateUrl : 'views/crm/customer-list.html',
 						controller : 'CustomerCtrl'
@@ -32,7 +32,7 @@ define(['angular',
 						controller : 'ContactCtrl'
 					})
 					.otherwise({
-						redirectTo : '/'
+					    redirectTo: '/commodity'
 					});
 	
 			}]);

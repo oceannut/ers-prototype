@@ -1,0 +1,30 @@
+﻿<div ng-init="init()">
+    <!-- Modal -->
+    <div class="modal fade" id="editDialog" tabindex="-1" role="dialog"
+         aria-labelledby="editDialogLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="editDialogLabel">
+                        <i class="fa fa-trash-o"></i>&nbsp;{{ 'COMMODITY' | translate }}{{ 'ACTION_EDIT' | translate }}{{ 'FORM_DIALOG' | translate }}
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div ng-include src="'views/biz/commodity-detail.html'"
+                         ng-controller="CommodityDetailCtrl"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" ng-click="save()" translate="ACTION_SAVE"></button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" translate="ACTION_CANCEL"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nav">
+        <button class="btn btn-default" data-toggle="modal"
+                data-target="#editDialog" translate="ACTION_ADD"></button>
+    </div>
+</div>
