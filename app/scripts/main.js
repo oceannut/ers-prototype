@@ -14,6 +14,7 @@ require
 			'angular-translate': '../../bower_components/angular-translate/angular-translate',
 			jquery: '../../bower_components/jquery/dist/jquery',
 			bootstrap: '../../bower_components/bootstrap/dist/js/bootstrap',
+			'bootstrap-treeview': '../../bower_components/bootstrap-treeview/src/js/bootstrap-treeview',
 			underscore: '../../bower_components/underscore/underscore'
 		},
 		shim: {
@@ -50,6 +51,9 @@ require
 			bootstrap: [
 				'jquery'
 			],
+			treeview: [
+				'bootstrap-treeview'
+			],
 			underscore: {
 				exports: '_'
 			}
@@ -67,9 +71,10 @@ window.name = 'NG_DEFER_BOOTSTRAP!';
 
 require([ 'angular', 'app', 'angular-route', 'angular-cookies',
 		'angular-sanitize', 'angular-resource', 'angular-animate',
-		'angular-touch', 'angular-translate', 'jquery', 'bootstrap', 'underscore' ], function(
-		angular, app, ngRoutes, ngCookies, ngSanitize, ngResource, ngAnimate,
-		ngTouch, ngTranslate, jquery, bootstrap, underscore) {
+		'angular-touch', 'angular-translate', 'jquery', 'bootstrap',
+        'treeview', 'underscore'],
+        function (angular, app, ngRoutes, ngCookies, ngSanitize, ngResource, ngAnimate,
+		ngTouch, ngTranslate, jquery, bootstrap, treeview, underscore) {
 	'use strict';
 	/* jshint ignore:start */
 	var $html = angular.element(document.getElementsByTagName('html')[0]);
