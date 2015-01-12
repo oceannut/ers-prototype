@@ -2,15 +2,17 @@
 
 define(['angular',
         'utils/tree-builder',
+        'utils/tree-traverse',
         'common/category-services'],
     function (angular) {
 
         angular.module('ers.category.tree.controllers', [
             'util.treeBuilder',
+            'util.treeTraverse',
             'ers.category.services'])
             .controller('CategoryTreeCtrl',
-                ['$scope', 'TreeBuilder', 'CategoryService',
-                function ($scope, TreeBuilder, CategoryService) {
+                ['$scope', 'TreeBuilder', 'TreeTraverse', 'CategoryService',
+                function ($scope, TreeBuilder, TreeTraverse, CategoryService) {
 
                     $scope.init = function () {
                         buildTree();
@@ -33,33 +35,28 @@ define(['angular',
                                         text: e.name
                                     };
                                 });
-                                $scope.categoryList = tree;
+                                //$scope.categoryList = tree;
+                                TreeTraverse.traverse(tree, function (e) {
+                                    e.nodes = e.childNodes;
+                                    //e.href = "#node-1";
+                                    //e.tags = ['available'];
+                                });
+                                $('#tree').treeview({
+                                    data: tree,
+                                    showBorder: false,
+                                    nodeIcon: '',
+                                    collapseIcon: 'fa fa-minus-square-o',
+                                    expandIcon: 'fa fa-plus-square-o',
+                                    //enableLinks: true,
+                                    //showTags: true,
+                                    onNodeSelected: function (event, node) {
+                                        console.log(node);
+                                    }
+                                });
                             }, function (error) {
                                 console.log(error);
                             });
-
-                        var tree = [{
-                                text: "Parent 1",
-                                nodes: [{
-                                    text: "Child 1",
-                                    nodes: [{
-                                        text: "Grandchild 1"
-                                    }, {
-                                        text: "Grandchild 2"
-                                    }]
-                                }, {
-                                    text: "Child 2"
-                                }]
-                            }, {
-                                text: "Parent 2"
-                            }, {
-                                text: "Parent 3"
-                            }, {
-                                text: "Parent 4"
-                            }, {
-                                text: "Parent 5"
-                            }];
-                        $('#tree').treeview({ data: tree });
+                        
                     }
 
                 }]);

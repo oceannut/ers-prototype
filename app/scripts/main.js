@@ -14,8 +14,9 @@ require
 			'angular-translate': '../../bower_components/angular-translate/angular-translate',
 			jquery: '../../bower_components/jquery/dist/jquery',
 			bootstrap: '../../bower_components/bootstrap/dist/js/bootstrap',
-			'bootstrap-treeview': '../../bower_components/bootstrap-treeview/src/js/bootstrap-treeview',
-			underscore: '../../bower_components/underscore/underscore'
+			'bootstrap-treeview': '../../bower_components/bootstrap-treeview/dist/bootstrap-treeview.min',
+			underscore: '../../bower_components/underscore/underscore',
+			fontawesome: '../../bower_components/fontawesome/fonts/*'
 		},
 		shim: {
 			angular: {

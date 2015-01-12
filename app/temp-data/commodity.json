@@ -11,6 +11,12 @@
         "sequence": 2
     },
     {
+        "id": "111",
+        "name": "IgA-human",
+        "parentId": "11",
+        "sequence": 1
+    },
+    {
         "id": "11",
         "name": "IgA",
         "parentId": "1",
