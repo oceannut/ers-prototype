@@ -10,8 +10,8 @@ define(['angular',
                 'ers.category.services'])
             .controller(
                 'CategoryCtrl',
-                ['$scope', '$routeParams', 'CategoryService',
-                function ($scope, $routeParams, CategoryService) {
+                ['$scope', '$log', '$routeParams', 'CategoryService',
+                function ($scope, $log, $routeParams, CategoryService) {
 
                     $scope.init = function () {
                         $scope.categoryScope = $routeParams.categoryScope;
@@ -20,6 +20,38 @@ define(['angular',
                             $scope.currentCategory = d;
                             console.log($scope.currentCategory);
                         });
+                    }
+
+                    $scope.edit = function () {
+                        if ($scope.currentCategory === undefined) {
+                            alert("请选择要编辑的节点");
+                            return;
+                        }
+                    }
+
+                    $scope.addRootNode = function () {
+
+                    }
+
+                    $scope.addChildNode = function () {
+                        if ($scope.currentCategory === undefined) {
+                            alert("请选择要编辑的节点");
+                            return;
+                        }
+                    }
+
+                    $scope.delete = function () {
+                        if ($scope.currentCategory === undefined) {
+                            alert("请选择要编辑的节点");
+                            return;
+                        }
+                    }
+
+                    $scope.deleteChildrenOnly = function () {
+                        if ($scope.currentCategory === undefined) {
+                            alert("请选择要编辑的节点");
+                            return;
+                        }
                     }
 
                     $scope.save = function () {

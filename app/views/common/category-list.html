@@ -5,12 +5,51 @@
                  ng-controller="CategoryTreeCtrl"></div>
         </div>
         <div class="col-md-8">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-toolkit">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <i class="navbar-brand fa fa-gear"></i>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbar-toolkit">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="javascript:void(0)" ng-click="edit()">编辑</a></li>
+                            <li class="dropdown">
+                                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">新建 <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="javascript:void(0)" ng-click="addRootNode()">根节点</a></li>
+                                    <li><a href="javascript:void(0)" ng-click="addChildNode()">子节点</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">删除 <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="javascript:void(0)" ng-click="delete()">自己和子节点</a></li>
+                                    <li><a href="javascript:void(0)" ng-click="deleteChildrenOnly()">仅子节点</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
             <form class="form-horizontal" role="form" name="form">
                 <div class="form-group">
-                    <label class="col-md-2 control-label">name</label>
+                    <label class="col-md-2 control-label">名称</label>
                     <div class="col-md-10">
                         <input type="text" class="form-control input-sm"
                                ng-model="currentCategory.Name" placeholder="name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">排序号</label>
+                    <div class="col-md-10">
+                        <input type="number" class="form-control input-sm" min="1" max="100"
+                               ng-model="currentCategory.Sequence">
                     </div>
                 </div>
                 <div class="form-group">

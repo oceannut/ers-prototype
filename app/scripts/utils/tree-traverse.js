@@ -58,6 +58,9 @@ define(['angular', 'underscore'], function (angular, _) {
 
             function traverse(tree, action) {
                 tree = tree || [];
+                if (tree.length == 0) {
+                    return;
+                }
                 action = action || angular.noop;
 
                 var arr = [];
@@ -77,6 +80,9 @@ define(['angular', 'underscore'], function (angular, _) {
 
             function sort(tree, action) {
                 tree = tree || [];
+                if (tree.length == 0) {
+                    return;
+                }
                 action = action || angular.noop;
 
                 traverse(tree, function (node) {

@@ -33,26 +33,29 @@ define(['angular', 'underscore', 'utils/tree-node', 'utils/tree-traverse'],
                     }
 
                     var arr = source.slice(0);
-                    for (var i = 0; i < arr.length; i++) {
-                        var item = arr[i];
-                        var parentId = parentIdAccessor(item);
-                        if (angular.isUndefined(parentId) || parentId === null) {
-                            tree.push(new treeNode.TreeNode(itemCreateAction(item)));
-                            arr.splice(i, 1);
-                            i--;
-                        }
-                    }
-
+                    //for (var i = 0; i < arr.length; i++) {
+                    //    var item = arr[i];
+                    //    var parentId = parentIdAccessor(item);
+                    //    if (angular.isUndefined(parentId) || parentId === null) {
+                    //        tree.push(new treeNode.TreeNode(itemCreateAction(item)));
+                    //        arr.splice(i, 1);
+                    //        i--;
+                    //    }
+                    //}
                     while (arr.length > 0) {
                         var current = arr.shift();
                         var parentId = parentIdAccessor(current);
-                        var parentNode = TreeTraverse.findNode(tree, function (e) {
-                            return parentId === idAccessor(e);
-                        });
-                        if (parentNode !== null) {
-                            parentNode.addChild(itemCreateAction(current));
+                        if (angular.isUndefined(parentId) || parentId === null) {
+                            tree.push(new treeNode.TreeNode(itemCreateAction(current)));
                         } else {
-                            arr.push(current);
+                            var parentNode = TreeTraverse.findNode(tree, function (e) {
+                                return parentId === idAccessor(e);
+                            });
+                            if (parentNode !== null) {
+                                parentNode.addChild(itemCreateAction(current));
+                            } else {
+                                arr.push(current);
+                            }
                         }
                     } 
                 }
